@@ -4,20 +4,20 @@ public class Coffee implements Comparable
     private int price;
     private String color;
     private String company;
-    
+
     Coffee(int price, String color, String company)
     {
-        this.title = title;
-        this.artist = artist;
-        this.year = year;
+        this.price = price;
+        this.color = color;
+        this.company = company;
     }
-    
+
     public int compareTo(Object song)
     {
-        
-        
+
+
         Song otherSong = (Song) song;
-        System.out.println("compare to being called " + artist + " and " + otherSong.artist);
+        System.out.println("compareTo being called " + artist + " and " + otherSong.artist);
         if (artist.compareTo(otherSong.artist) < 0)
         {
             return -1;
@@ -44,21 +44,21 @@ public class Coffee implements Comparable
                }
             } else
             {
-                return 1;   
+                return 1;
             }
-            
+
         }
         else
         {
             return 1;
         }
     }
-    
+
     public String toString()
     {
         return artist + " released " + title + " in " + year;
     }
-        
-        
-   
+
+
+
 }
