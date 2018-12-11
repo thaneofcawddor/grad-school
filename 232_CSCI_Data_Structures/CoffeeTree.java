@@ -96,6 +96,7 @@ public class CoffeeTree<E extends Comparable>{
     }
 
     private rotateWithLeftChild(AVLNode p){
+      p.left = p;
       
     }
 

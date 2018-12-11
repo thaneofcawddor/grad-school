@@ -1,64 +1,30 @@
+public class Coffee implements Comparable{
 
-public class Coffee implements Comparable
-{
-    private int price;
-    private String color;
-    private String company;
+    CoffeeNode left, right;
+    int price;
+    String color;
+    String company;
+    String distributor;
 
-    Coffee(int price, String color, String company)
+    public Coffee(int price, String color, String company, String distributor)
     {
         this.price = price;
         this.color = color;
         this.company = company;
+        this.distributor = distributor;
+
+        data =
+
+        left = null;
+        right = null;
+        height = 0;
     }
 
-    public int compareTo(Object song)
-    {
-
-
-        Song otherSong = (Song) song;
-        System.out.println("compareTo being called " + artist + " and " + otherSong.artist);
-        if (artist.compareTo(otherSong.artist) < 0)
-        {
-            return -1;
-        }
-        else if (artist.compareTo(otherSong.artist) == 0)
-        {
-            if (title.compareTo(otherSong.title) < 0)
-            {
-                 return -1;
-             }
-             else if (title.compareTo(otherSong.title) == 0)
-            {
-                if (year < otherSong.year)
-                {
-                    return -1;
-                }
-                else if (year == otherSong.year)
-               {
-                   return 0;
-               }
-               else
-               {
-                   return 1;
-               }
-            } else
-            {
-                return 1;
-            }
-
-        }
-        else
-        {
-            return 1;
-        }
+    public int compareTo(Object o) {
+        throw new Exception("Not defined.");
     }
 
-    public String toString()
-    {
-        return artist + " released " + title + " in " + year;
+    public String toString(){
+        return "";
     }
-
-
-
 }
