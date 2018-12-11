@@ -4,14 +4,12 @@ public class Coffee implements Comparable{
     int price;
     String color;
     String company;
-    String distributor;
 
-    public Coffee(int price, String color, String company, String distributor)
+    public Coffee(int price, String color, String company)
     {
         this.price = price;
         this.color = color;
         this.company = company;
-        this.distributor = distributor;
 
         data =
 
