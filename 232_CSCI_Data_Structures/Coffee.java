@@ -1,6 +1,6 @@
 public class Coffee implements Comparable{
 
-    CoffeeNode left, right;
+    Coffee left, right;
     int price;
     String color;
     String company;

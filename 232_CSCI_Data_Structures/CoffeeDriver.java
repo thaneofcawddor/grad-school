@@ -32,3 +32,7 @@ public int compareTo(Object coffee1, Object coffee2){
         return 1;
     }
 }
+
+public static void main(String[] args) {
+
+}

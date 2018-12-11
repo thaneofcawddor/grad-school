@@ -1,26 +1,3 @@
-public class CoffeeNode{
-
-  CoffeeNode left, right;
-  int data;
-  int height;
-
-  /* Constructor */
-  public CoffeeNode(){
-    left = null;
-    right = null;
-    data = 0;
-    height = 0;
-  }
-
-  /* Another Constructor to accept data*/
-  public CoffeeNode(int n){
-    left = null;
-    right = null;
-    data = n;
-    height = 0;
-  }
-}
-
 public class CoffeeTree<E extends Comparable>{
 
     private Node<E> root;
@@ -95,26 +72,27 @@ public class CoffeeTree<E extends Comparable>{
       }
     }
 
-    private rotateWithLeftChild(AVLNode p){
-      p.left = p;
-      
+    private rotateWithRightChild(CoffeeNode currentNode){
+      CoffeeNode newRootNode = currentNode.right;
+      CoffeeNode newLeftNode = newRootNode.left;
+
+      newRootNode.setLeft(currentNode);
+      currentNode.setRight(newLeftNode);
+
+      currentNode.height = max(height(currentNode.left), height(currentNode.right)) + 1;
+      newRootNode.height = max(height(newRootNode.right), currentNode.height) + 1;
     }
 
+    private doubleWithRightChild(CoffeeNode currentNode){
+      CoffeeNode newRightChild = currentNode.right;
+      CoffeeNode newRightNode = newRightChild.left;
+      CoffeeNode newLeftChild = newRightChild.right;
 
-    public void remove (CoffeeNode<E> data){
+      currentNode.setRight(newRightNode);
+      newRightNode.setRight(newRightChild);
+      newRightNode.setLeft(newLeftChild);
 
+      rotateWithRightChild(currentNode);
     }
 
-
-    public void addInOrder (CoffeeNode<E> data){
-
-    }
-
-    public void print(){
-
-    }
-
-    public void printBackwards(){
-
-    }
 }
