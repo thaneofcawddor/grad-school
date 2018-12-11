@@ -70,7 +70,7 @@ public class CoffeeTree<E extends Comparable>{
       else if (x < E.data){
         E.left = insert(x, E.left);
         if (height(E.left) - height(E.right) > 1){
-          if (x < t.left.data){
+          if (x < E.left.data){
             x = rotateWithLeftChild(E);
           }
           else{
@@ -80,8 +80,20 @@ public class CoffeeTree<E extends Comparable>{
       }
       else if (x > E.data){
         E.right = insert(x, E.right);
-
+        if (height(E.right) - height(E.left) > 1){
+          if (x < E.right.data){
+            x = rotateWithRightChild(E);
+          }
+          else{
+              x = doubleWithRightChild(E);
+          }
+        }
       }
+      // Or else it is a duplicate, so do not add
+      else {
+        return E;
+      }
+
     }
 
 
