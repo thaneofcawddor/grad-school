@@ -93,9 +93,11 @@ public class CoffeeTree<E extends Comparable>{
       else {
         return E;
       }
-
     }
 
+    private rotateWithLeftChild(AVLNode p){
+      
+    }
 
 
     public void remove (CoffeeNode<E> data){

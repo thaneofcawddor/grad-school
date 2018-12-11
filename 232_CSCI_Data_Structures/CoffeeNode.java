@@ -1,66 +1,24 @@
 
-public class Coffee implements Comparable
-{
-    private int price;
-    private String color;
-    private String company;
-    private String distributor;
-    
-    Coffee(int price, String color, String company, String distributor)
-    {
-        this.price = price;
-        this.color = color;
-        this.company = company;
-        this.distributor = distributor;
-    }
+public class CoffeeNode implements Comparable{
 
-    public int compareTo(Object o) {
-        throw new Exception("Not defined.");
-    }
+    CoffeeNode left, right;
+    int data;
+    int height;
 
-    public String toString(){
-        return "";
-    }
-}
-
-public class CoffeeNode<E>
-{
-    private E data;
-    private CoffeeNode<E> leftChild;
-    private CoffeeNode<E> rightChild;
-
-    //Constructor
     public CoffeeNode()
     {
-        this.leftChild = null;
-        this.rightChild = null;
-        this.data = SomeCoffeeData;
+        left = null;
+        right = null;
+        height = 0;
+        data = 0;
     }
 
-    public E getData(){
-        return data;
-    }
-
-    //Get methods
-    public CoffeeNode getLeft()
+    public CoffeeNode(Coffee coffee)
     {
-        return leftChild;
-    }
-    
-    public CoffeeNode getRight()
-    {
-        return rightChild;
-    }
-    
-    //Set methods
-    public void setRight(CoffeeNode node)
-    {
-        this.rightChild = node;
-    }
-  
-    public void setLeft(CoffeeNode node)
-    {
-        this.leftChild = node;
+        left = null;
+        right = null;
+        height = 0;
+        data = coffee;
     }
 
 }
