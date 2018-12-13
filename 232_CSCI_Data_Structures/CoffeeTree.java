@@ -1,4 +1,4 @@
-public class CoffeeTree<E extends Comparable>{
+  public class CoffeeTree<E extends Comparable>{
 
     private Node<E> root;
 
@@ -72,25 +72,37 @@ public class CoffeeTree<E extends Comparable>{
       }
     }
 
-    private rotateWithRightChild(CoffeeNode currentNode){
-      CoffeeNode newRootNode = currentNode.right;
-      CoffeeNode newLeftNode = newRootNode.left;
+/* Performs a single rotation to correct a right-right error and corrects the height */
+    private CoffeeNode<T> rotateRightRightSingle(CoffeeNode<T> currentNode){
 
-      newRootNode.setLeft(currentNode);
-      currentNode.setRight(newLeftNode);
+      System.out.println("Beginning left rotation ... on node: " + currentNode.getData());
 
-      currentNode.height = max(height(currentNode.left), height(currentNode.right)) + 1;
+      CoffeeNode<T> newRootNode = currentNode.getRight;
+      CoffeeNode<T> newLeftNode = newRootNode.getLeft;
+
+      newRootNode.setNewLeft(currentNode);
+      currentNode.setNewRight(newLeftNode);
+
+      currentNode.setHeight(getHeight(currentNode));
+      newRootNode.setHeight(getHeight(newRootNode));
+
+      return newRootNode;
+
+      /* This should work too:
       newRootNode.height = max(height(newRootNode.right), currentNode.height) + 1;
+      */
     }
 
-    private doubleWithRightChild(CoffeeNode currentNode){
-      CoffeeNode newRightChild = currentNode.right;
-      CoffeeNode newRightNode = newRightChild.left;
-      CoffeeNode newLeftChild = newRightChild.right;
+/* Performs a double rotation to correct a right-left error by doing the first rotation
+then sending the result, now a right-right error, to the single rotation method */
+    private rotateRightLeftDouble(CoffeeNode currentNode){
+      CoffeeNode newRightChild = currentNode.getRight;
+      CoffeeNode newRightNode = newRightChild.getLeft;
+      CoffeeNode newLeftChild = newRightChild.getRight;
 
-      currentNode.setRight(newRightNode);
-      newRightNode.setRight(newRightChild);
-      newRightNode.setLeft(newLeftChild);
+      currentNode.setRight(getHeight(newRightNode));
+      newRightNode.setRight(getHeight(newRightChild));
+      newRightNode.setLeft(getHeight(newLeftChild));
 
       rotateWithRightChild(currentNode);
     }
