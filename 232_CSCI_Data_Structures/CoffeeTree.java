@@ -75,13 +75,13 @@
 /* Performs a single rotation to correct a right-right error and corrects the height */
     private CoffeeNode<T> rotateRightRightSingle(CoffeeNode<T> currentNode){
 
-      System.out.println("Beginning left rotation on node: " + currentNode.getData());
+      System.out.println("Beginning right-right correction on node: " + currentNode.getData());
 
       CoffeeNode<T> newRootNode = currentNode.getRight();
-      CoffeeNode<T> newLeftNode = newRootNode.getLeft();
+      CoffeeNode<T> newRightChild = newRootNode.getLeft();
 
       newRootNode.setNewLeft(currentNode);
-      currentNode.setNewRight(newLeftNode);
+      currentNode.setNewRight(newRightChild);
 
       currentNode.setHeight(getHeight(currentNode));
       newRootNode.setHeight(getHeight(newRootNode));
@@ -97,7 +97,7 @@
 then sending the result, now a right-right error, to the single rotation method */
     private CoffeeNode<T> rotateRightLeftDouble(CoffeeNode<T> currentNode){
 
-      System.out.println("Beginning first of two rotations on node: " + currentNode.getData())
+      System.out.println("Beginning first of two rotations on node: " + currentNode.getData());
 
       CoffeeNode<T> newRightChild = currentNode.getRight();
       CoffeeNode<T> newRightNode = newRightChild.getLeft();
@@ -107,7 +107,43 @@ then sending the result, now a right-right error, to the single rotation method 
       newRightNode.setRight(newRightChild);
       newRightNode.setLeft(newLeftChild);
 
+      System.out.println("First rotation complete.");
+
       rotateRightRightSingle(currentNode);
     }
 
+/* Performs a single rotation to correct a left-left error and corrects the height */
+    private CoffeeNode<T> rotateLeftLeftSingle(CoffeeNode<T> currentNode){
+
+      System.out.println("Beginning left-left correction on node: " + currentNode.getData());
+
+      CoffeeNode<T> newRootNode = currentNode.getLeft();
+      CoffeeNode<T> newLeftChild = newRootNode.getRight();
+
+      newRootNode.setNewRight(currentNode);
+      currentNode.setNewLeft(newLeftChild);
+
+      currentNode.setHeight(getHeight(currentNode));
+      newRootNode.setHeight(getHeight(newRootNode));
+
+      return newRootNode;
 }
+
+/* Performs a double rotation to correct a left-right error by doing the first rotation
+then sending the result, now a right-right error, to the single rotation method */
+    private CoffeeNode<T> rotateLeftRightDouble(CoffeeNode<T> currentNode){
+
+      System.out.println("Beginning first of two rotations on node: " + currentNode.getData());
+
+      CoffeeNode<T> newLeftChild = currentNode.getLeft();
+      CoffeeNode<T> newLeftNode = newLeftChild.getRight();
+      CoffeeNode<T> newRightChild = newLeftChild.getLeft();
+
+      currentNode.setLeft(newLeftNode);
+      newRightNode.setLeft(newLeftChild);
+      newRightNode.setRight(newRightChild);
+
+      System.out.println("First rotation complete.");
+
+      rotateLeftLeftSingle(currentNode);
+    }
