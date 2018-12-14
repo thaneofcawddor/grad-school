@@ -5,6 +5,10 @@ public class Turtle extends JFrame(){
     public static int width = 300;
     public static int height = 300;
 
+    private static JPanel panel;
+    private static JFrame jframe;
+    private static Graphics graphics;
+
     public Turtle (int x, int y, int angle){
       if (jframe == null) {
            jframe= new JFrame("Turtle window");
@@ -45,11 +49,11 @@ public class Turtle extends JFrame(){
     }
 
     public void penup(){
-
+      penDown = false;
     }
 
     public void pendown(){
-
+      penDown = true;
     }
 
     public void home(){
@@ -78,11 +82,13 @@ public class Turtle extends JFrame(){
     }
 
     public void pensize(int penSize){
-
+      StdDraw.setPenRadius(penSize);
     }
 
     public void clear(){
-
+      Color newColor = new Color(255, 255, 255);
+      graphics.fillRect(0, 0, width, height);
+      graphics.setColor(newColor);
     }
 
     public void penColor(int R, int G, int B){
