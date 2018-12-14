@@ -2,15 +2,45 @@ public class Turtle extends JFrame(){
     private int x, y;
     private int angle;
 
+    public static int width = 300;
+    public static int height = 300;
+
+    public Turtle (int x, int y, int angle){
+      if (jframe == null) {
+           jframe= new JFrame("Turtle window");
+           panel= new JPanel();
+           panel.setPreferredSize(new Dimension(width, height));
+           jframe.getContentPane().add(panel, BorderLayout.CENTER);
+           jframe.pack();
+           jframe.show();
+           graphics= panel.getGraphics();
+           clear();
+           this.x= x;
+           this.y= y;
+           clear();
+
+       }
+
+       this.x= x;
+       this.y= y;
+       turtleAngle= ang;
+   }
+    }
+
     public void fd(){
-
+      int currentx = x;
+      int currenty = y;
+      x += step * Math.cos(Math.toRadians(angle));
+      y += step * Math.sin(Math.toRadians(angle));
+      StdDraw.line(currentx, currenty, x, y);
     }
 
-    public void right(){
-
+    public void right(turnDegree){
+      angle -= turnDegree;
     }
 
-    public void left(){
+    public void left(int turnDegree){
+      angle += turnDegree;
 
     }
 
@@ -23,19 +53,20 @@ public class Turtle extends JFrame(){
     }
 
     public void home(){
-
+      goTo(0,0);
     }
 
-    public void goTo(){
-
+    public void goTo(int a, int b){
+      x = width/2 + a;
+      y = height/2 + b;
     }
 
     public void xcor(){
-
+      return x;
     }
 
     public void ycor(){
-
+      return y;
     }
 
     public void setHeading(int rotationDegree){
@@ -55,12 +86,13 @@ public class Turtle extends JFrame(){
     }
 
     public void penColor(int R, int G, int B){
-
+      Color newColor = new Color(R, G, B);
+      penColor.setColor(newColor);
     }
 }
 
 public class DrawingPanel extends JPanel(){
-  
+
   public void paintComponent(Graphics g){
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D)g;
@@ -87,7 +119,7 @@ public static void main(String[] args){
     norbert.left(360/sides);
   }
   norbert.penUp();
-  norbert.goTO(-30, -25);
+  norbert.goTo(-30, -25);
   norbert.penDown();
   norbert.penColor(0, 0, 255);
   norbert.fd(125);
