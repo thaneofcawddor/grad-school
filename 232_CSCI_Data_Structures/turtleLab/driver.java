@@ -2,19 +2,6 @@ public class Turtle extends JFrame(){
     private int x, y;
     private int angle;
 
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
-        if(grid == null){
-           int w = this.getWidth();
-           int h = this.getHeight();
-           grid = (BufferedImage)(this.createImage(w,h));
-           gc = grid.createGraphics();
-
-        }
-        g2.drawImage(grid, null, 0, 0);
-    }
-
     public void fd(){
 
     }
@@ -70,6 +57,22 @@ public class Turtle extends JFrame(){
     public void penColor(int R, int G, int B){
 
     }
+}
+
+public class DrawingPanel extends JPanel(){
+  
+  public void paintComponent(Graphics g){
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D)g;
+      if(grid == null){
+         int w = this.getWidth();
+         int h = this.getHeight();
+         grid = (BufferedImage)(this.createImage(w,h));
+         gc = grid.createGraphics();
+
+      }
+      g2.drawImage(grid, null, 0, 0);
+  }
 }
 
 public static void main(String[] args){
