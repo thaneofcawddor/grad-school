@@ -74,11 +74,11 @@ public class Turtle extends JFrame(){
     }
 
     public void setHeading(int rotationDegree){
-
+      angle = rotationDegree;
     }
 
     public void speed(int speed){
-
+//stumped on this one.
     }
 
     public void pensize(int penSize){
