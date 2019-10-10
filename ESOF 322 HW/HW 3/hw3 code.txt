@@ -1,0 +1,81 @@
+/*
+The main methods of implementing these classes have been omitted since running
+functional code seemed to be beyond the scope of the assignment versus what we did,
+which is translating the class diagrams written in UML into classes written in java.
+*/
+
+//Exercise 2, part (e)
+public class BinTree{
+
+    Node root = null;
+
+    private class Node {
+        int data;
+        Node leftChild;
+        Node rightChild;
+        boolean leaf;
+
+        Node(int data){
+            this.data = data;
+            leftChild = null;
+            rightChild = null;
+            leaf = true;
+
+        }
+    }
+    public Node insertNode(Node thisNode, int data){
+        if (root == null){
+          root = new Node(data);
+          return(root);
+        }
+
+        else if (leaf == true){
+            leaf = false;
+            return new Node(data);
+        }
+
+        else if (thisNode.data > data){
+            thisNode.leftChild = insertNode(thisNode.leftChild, data);
+        }
+
+        else if (value.data < data){
+            thisNode.rightChild = insertNode(thisNode.rightChild, data);
+        }
+
+    }
+}
+
+//Exercise 2, part (g)
+
+public class Employee{
+    private String name;
+    private int SSnum;
+    private int salary;
+
+    public Employee (String name, int SSnum, int salary){
+        this.name = name;
+        this.SSnum = SSnum;
+        this.salary = salary;
+    }
+}
+
+public class EmployeeRecords {
+
+    EmployeeNode first = null;
+
+    private class EmployeeNode{
+        Employee e;
+        EmployeeNode next;
+    }
+
+    public EmployeeNode(Employee newE){
+        this.e = newE;
+    }
+
+    public void addEmployee(String name, int SSnum, int salary){
+      Employee e = new Employee(name, SSnum, salary);
+      EmployeeNode n = new EmployeeNode(e);
+      n.next = first;
+      first = n;
+    }
+}
